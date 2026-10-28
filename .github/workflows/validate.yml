@@ -1,0 +1,27 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lint skills
+        run: python scripts/validate_skills.py
+      - name: Smoke test lead-list-cleanup
+        run: |
+          python skills/lead-list-cleanup/scripts/clean_leads.py \
+            skills/lead-list-cleanup/examples/sample_leads.csv \
+            --out /tmp/out.csv --report /tmp/report.json
+      - name: Smoke test n8n-workflow-review
+        run: |
+          # The example workflow is intentionally risky, so exit code 1 is expected.
+          python skills/n8n-workflow-review/scripts/lint_workflow.py \
+            skills/n8n-workflow-review/examples/risky_workflow.json && exit 1 || test $? -eq 1

@@ -1,0 +1,26 @@
+name: Skill gave a bad result
+description: Report a skill that misfired, did not trigger, or produced poor output
+labels: ["bug"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill?
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: What did you ask, and what input did you give? (remove real data)
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Where did you run it? (Claude Code, claude.ai, API, other agent)

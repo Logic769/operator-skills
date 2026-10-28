@@ -1,0 +1,27 @@
+name: New skill idea
+description: Propose a skill for a recurring ops, GTM or automation job
+labels: ["new skill"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Skill name (kebab-case)
+      placeholder: churn-risk-review
+    validations:
+      required: true
+  - type: textarea
+    id: job
+    attributes:
+      label: What job does it do, and how often do you do it?
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: What should the output look like?
+  - type: checkboxes
+    id: build
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to build this skill myself

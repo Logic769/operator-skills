@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+.env
+# Outputs of lead-list-cleanup, so cleaned lead lists with real data are never committed
+*.cleaned.csv
+*.report.json
+*.out.csv

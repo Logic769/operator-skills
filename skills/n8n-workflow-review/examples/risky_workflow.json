@@ -1,0 +1,10 @@
+{
+  "name": "Daily lead sync (example)",
+  "nodes": [
+    {"name": "Webhook", "type": "n8n-nodes-base.webhook", "parameters": {"path": "leads", "httpMethod": "POST"}},
+    {"name": "Fetch enrichment", "type": "n8n-nodes-base.httpRequest", "parameters": {"url": "https://api.example.com/enrich", "headerParameters": {"parameters": [{"name": "x-api-key", "value": "EXAMPLE-NOT-A-REAL-KEY"}]}}},
+    {"name": "Code", "type": "n8n-nodes-base.code", "parameters": {"jsCode": "return items;"}},
+    {"name": "Old step", "type": "n8n-nodes-base.set", "disabled": true, "parameters": {}}
+  ],
+  "settings": {}
+}

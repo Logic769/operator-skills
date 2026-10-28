@@ -4,4 +4,4 @@ This project follows the [Contributor Covenant, version 2.1](https://www.contrib
 
 In short: be respectful, assume good intent, give specific and useful feedback, and keep discussion about the work.
 
-Report unacceptable behavior to the maintainer through a private GitHub message or via https://aftermachines.com. Reports are handled confidentially.
+To report unacceptable behavior, contact the maintainer privately through https://aftermachines.com and mention this repository. Reports are handled confidentially.

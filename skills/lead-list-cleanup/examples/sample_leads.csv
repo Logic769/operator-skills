@@ -1,7 +1,8 @@
 Full Name,Email Address,Company Name,Job Title,Website
-PRIYA RAMAN,priya@northwind-demo.com,Northwind Demo,Head of Ops,northwind-demo.com
-Priya Raman,Priya@Northwind-Demo.com,Northwind Demo,Head of Operations,https://www.northwind-demo.com
-Arjun Mehta,arjun.mehta@gmail.com,Contoso Labs,Founder,contoso-labs.io
-Sales Team,sales@fabrikam-demo.com,Fabrikam Demo,,fabrikam-demo.com
-Bad Row,not-an-email,Litware,CEO,
-Lena Ortiz,lena@tailspin-demo.co,Tailspin Demo,VP Customer Success,tailspin-demo.co
+PRIYA RAMAN,priya@northwind.example,Northwind Demo,Head of Ops,northwind.example
+Priya Raman,Priya@Northwind.Example,Northwind Demo,Head of Operations,https://www.northwind.example
+Sam Lee,sam@contoso.example,Contoso Labs,Founder,contoso.example
+Sales Team,sales@fabrikam.example,Fabrikam Demo,,fabrikam.example
+Bad Row,not-an-email,Litware Demo,CEO,
+Lena Ortiz,lena@tailspin.example,Tailspin Demo,VP Customer Success,tailspin.example
+Formula Test,formula@litware.example,=HYPERLINK("https://attacker.example"),Analyst,litware.example

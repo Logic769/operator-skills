@@ -1,0 +1,28 @@
+{
+  "name": "operator-skills",
+  "owner": {
+    "name": "Nitin Sarkar",
+    "url": "https://github.com/zeebyx"
+  },
+  "metadata": {
+    "description": "Open-source Agent Skills for operations, GTM, RevOps and automation work",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "operator-skills",
+      "description": "Lead list cleanup, ICP scoring, outreach sequences, n8n workflow review, SOPs, call notes to CRM and weekly ops reports",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/lead-list-cleanup",
+        "./skills/icp-lead-scoring",
+        "./skills/cold-outreach-sequence",
+        "./skills/n8n-workflow-review",
+        "./skills/sop-writer",
+        "./skills/call-notes-to-crm",
+        "./skills/weekly-ops-report"
+      ]
+    }
+  ]
+}

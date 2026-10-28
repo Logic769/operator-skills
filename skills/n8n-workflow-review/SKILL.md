@@ -5,7 +5,7 @@ description: Review an exported n8n workflow JSON for reliability, security and 
 
 # n8n workflow review
 
-Most n8n failures in production come from the same short list: no error path, secrets pasted into nodes, unbounded loops, and webhooks anyone can call. This skill checks for all of them the same way every time.
+Common n8n production problems include missing error handling, secrets pasted into nodes, loops that run far more often than expected, and webhooks anyone can call. This skill checks for them the same way every time.
 
 ## Steps
 
@@ -14,11 +14,13 @@ Most n8n failures in production come from the same short list: no error path, se
 2. **Run the linter.**
 
    ```bash
-   python scripts/lint_workflow.py workflow.json
-   python scripts/lint_workflow.py workflow.json --format json   # machine-readable
+   python3 ${CLAUDE_SKILL_DIR}/scripts/lint_workflow.py workflow.json
+   python3 ${CLAUDE_SKILL_DIR}/scripts/lint_workflow.py workflow.json --format json
    ```
 
-   It prints findings grouped by severity (`high`, `medium`, `low`) with the node name for each.
+   `${CLAUDE_SKILL_DIR}` is this skill's folder (Claude Code fills it in). Where it is not set, use the path to `scripts/lint_workflow.py` next to this SKILL.md.
+
+   It prints findings grouped by severity (`high`, `medium`, `low`) with the node name for each. Exit codes: `0` no high findings, `1` at least one high finding, `2` the file is not a readable n8n workflow. The script only reads the file; it never runs anything from it.
 
 3. **Review what the script cannot judge**, by reading the workflow:
    - Does the trigger match the job (schedule vs webhook vs polling)?
@@ -32,14 +34,16 @@ Most n8n failures in production come from the same short list: no error path, se
 
 | Check | Severity |
 |---|---|
-| Possible secret (API key, bearer token, password) hardcoded in node parameters | high |
-| Webhook trigger with no authentication | high |
+| Possible hardcoded secret: known token formats (Anthropic, OpenAI, GitHub, Slack, AWS, Google, Bearer), header and query values named like keys, and `api_key`-style pairs inside JSON bodies or code | high |
+| Webhook, Form or Chat trigger with no authentication | high |
 | No error workflow set and no Error Trigger node | medium |
 | HTTP Request node without retry on fail | medium |
 | Nodes still named with defaults ("HTTP Request1", "Code") | low |
 | Disabled nodes left in the workflow | low |
 | Code nodes longer than 80 lines (move to a sub-workflow or service) | low |
 | Workflow has no description / notes | low |
+
+The secret check is a safety net, not a guarantee. It skips values written as n8n expressions (`={{ ... }}`), so also skim those by eye.
 
 ## Output format
 
